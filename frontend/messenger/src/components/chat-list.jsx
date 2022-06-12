@@ -29,17 +29,19 @@ const users = [
   },
 ];
 
-// const handleClick = (data) => {
-//   console.log(data);
-// };
-
-function ChatList() {
+function ChatList(props) {
+  const handleUserData = (data) => {
+    console.log(data);
+    props.onUserSelected(data);
+  };
   return (
     <div className="people-list" id="people-list">
       <Search />
       <ul className="list">
         {users.map((user, index) => {
-          return <ListUser key={index} data={user} />;
+          return (
+            <ListUser key={index} data={user} onUserClicked={handleUserData} />
+          );
         })}
       </ul>
     </div>
